@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Magento\Wysiwyg\Model\Config\ConfigInterface" type="Magento\Wysiwyg\Model\Config" />
+
+    <type name="Magento\Framework\View\Element\UiComponent\Config\Converter">
+        <plugin name="wysiwyg_ui_plugin" type="Magento\Wysiwyg\Plugin\UiPlugin" sortOrder="1" />
+    </type>
+</config>

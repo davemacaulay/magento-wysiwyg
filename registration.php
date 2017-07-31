@@ -6,6 +6,6 @@
 
 \Magento\Framework\Component\ComponentRegistrar::register(
     \Magento\Framework\Component\ComponentRegistrar::MODULE,
-    'Magento_Wyswiyg',
+    'Magento_Wysiwyg',
     __DIR__
 );

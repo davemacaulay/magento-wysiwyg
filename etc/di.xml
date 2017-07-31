@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <virtualType name="WysiwygReader" type="Magento\Framework\Config\Reader\Filesystem">
+        <arguments>
+            <argument name="converter" xsi:type="object">Magento\Wysiwyg\Model\Config\Converter</argument>
+            <argument name="schemaLocator" xsi:type="object">Magento\Wysiwyg\Model\Config\SchemaLocator</argument>
+            <argument name="fileName" xsi:type="string">wysiwyg.xml</argument>
+        </arguments>
+    </virtualType>
+</config>

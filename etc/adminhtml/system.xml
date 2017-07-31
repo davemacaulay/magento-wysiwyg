@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="cms" translate="label" type="text" sortOrder="1001" showInDefault="1" showInWebsite="1" showInStore="1">
+            <group id="wysiwyg" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+                <field id="type" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>WYSIWYG Type</label>
+                    <source_model>Magento\Wysiwyg\Model\Config\Source\Wysiwyg\Type</source_model>
+                    <comment>Multiple WYSIWYG instances can be installed. However, only one can be enabled. These are provided by 3rd party extensions.</comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>
