@@ -1,0 +1,18 @@
+<div class="admin__control-wysiwig">
+    <div class="buttons-set">
+        <button type="button" name="enable_disable" data-bind="click: showHideEditor, text: $t('Show / Hide Editor')"></button>
+    </div>
+
+    <textarea class="admin__control-textarea" data-bind="
+    value: value,
+    valueUpdate: valueUpdate,
+    hasFocus: focused,
+    attr: {
+        name: inputName,
+        'aria-describedby': noticeId,
+        placeholder: placeholder,
+        id: uid,
+        disabled: disabled
+    }"
+    />
+</div>

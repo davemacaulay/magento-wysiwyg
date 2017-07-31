@@ -25,3 +25,13 @@ You then have to implement a component & template, these followed Magento's core
 ### Changing WYSIWYG type
 You can change the currently enabled WYSIWYG type via the system configuration.
 > Configuration > General > Content Management > WYSIWYG Type
+
+### Available editors
+We provide a number of editors embedded in the WYSIWYG module which can be enabled. We currently implement:
+- TinyMCE v4.6.4
+- TinyMCE v3.5.8
+
+**Note**: These implementations do not include the required Magento plugins:
+- Magento Widgets
+- Magento Variables
+- Magento Media Gallery

@@ -10,7 +10,7 @@
         </wysiwyg>
         <wysiwyg name="tinymce_v3">
             <label>TinyMCE</label>
-            <version>3.0.0</version>
+            <version>3.5.8</version>
             <component>Magento_Wysiwyg/js/tinymcev3/wysiwyg-component</component>
             <template>Magento_Wysiwyg/tinymcev3/wysiwyg</template>
         </wysiwyg>

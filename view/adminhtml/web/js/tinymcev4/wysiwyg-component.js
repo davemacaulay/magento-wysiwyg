@@ -1,9 +1,8 @@
 define([
     'underscore',
-    'jquery',
     'Magento_Wysiwyg/js/component/wysiwyg-component',
     'Magento_Wysiwyg/js/tinymcev4/tinymce.min'
-], function (_, jQuery, WysiwygComponent) {
+], function (_, WysiwygComponent) {
 
     return WysiwygComponent.extend({
         defaults: {
@@ -17,7 +16,7 @@ define([
          */
         initWysiwyg: function (element) {
             var self = this;
-            tinymce.baseURL = this.baseWysiwygJsUrl + '/js/tinymcev4';
+            tinyMCE.baseURL = this.baseWysiwygJsUrl + '/js/tinymcev4';
             tinyMCE.suffix = '.min';
             tinyMCE.init({
                 target: element,
@@ -32,6 +31,11 @@ define([
                 toolbar2: 'print preview media | forecolor backcolor emoticons | codesample help',
                 setup: function (editor) {
                     self.editor = editor;
+
+                    // Ensure changes from the editor update the observable
+                    editor.on('change keyup nodechange', function (e) {
+                        self.value(editor.getContent());
+                    });
                 }
             });
         },
