@@ -5,7 +5,7 @@ This is an example implementation of abstracting the WYSIWYG component to allow 
 This can be achieved by implementing `wysiwyg.xml` within your module. 
 
 Here is an example of the potential contents:
-```
+```xml
 <?xml version="1.0"?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="wysiwyg.xsd">
@@ -26,12 +26,16 @@ You then have to implement a component & template, these followed Magento's core
 You can change the currently enabled WYSIWYG type via the system configuration.
 > Configuration > General > Content Management > WYSIWYG Type
 
+![System Configuration](http://i.imgur.com/D4gdKbg.png)
+
 ### Available editors
 We provide a number of editors embedded in the WYSIWYG module which can be enabled. We currently implement:
 - TinyMCE v4.6.4
+![TinyMCE v4](http://i.imgur.com/vi2Fh6S.png)
 - TinyMCE v3.5.8
+![TinyMCE v3](http://i.imgur.com/qzaF427.png)
 
-**Note**: These implementations do not include the required Magento plugins:
+**Note**: These implementations do not yet include the required Magento plugins:
 - Magento Widgets
 - Magento Variables
 - Magento Media Gallery
