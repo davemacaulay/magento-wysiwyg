@@ -12,12 +12,14 @@
                 <item name="tinymce_v4" xsi:type="array">
                     <item name="label" xsi:type="string">TinyMCE</item>
                     <item name="version" xsi:type="string">4.6.4</item>
+                    <item name="config" xsi:type="string">Magento\Wysiwyg\Model\TinyMCE\Config</item>
                     <item name="component" xsi:type="string">Magento_Wysiwyg/js/tinymcev4/wysiwyg-component</item>
                     <item name="template" xsi:type="string">Magento_Wysiwyg/tinymcev4/wysiwyg</item>
                 </item>
                 <item name="tinymce_v3" xsi:type="array">
                     <item name="label" xsi:type="string">TinyMCE</item>
                     <item name="version" xsi:type="string">3.5.8</item>
+                    <item name="config" xsi:type="string">Magento\Wysiwyg\Model\TinyMCE\Config</item>
                     <item name="component" xsi:type="string">Magento_Wysiwyg/js/tinymcev3/wysiwyg-component</item>
                     <item name="template" xsi:type="string">Magento_Wysiwyg/tinymcev3/wysiwyg</item>
                 </item>

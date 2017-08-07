@@ -4,7 +4,7 @@ namespace Magento\Wysiwyg\Component\Form\Element;
 use Magento\Framework\View\Element\UiComponent\ContextInterface;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Wysiwyg\Model\Types;
-use Magento\Framework\View\Asset\Repository;
+use Magento\Wysiwyg\Model\Config\Factory;
 
 /**
  * Class Wysiwyg
@@ -22,8 +22,7 @@ class Wysiwyg extends \Magento\Ui\Component\Form\Element\AbstractElement
      *
      * @param ContextInterface     $context
      * @param Types                $wysiwygTypes
-     * @param ScopeConfigInterface $scopeConfig
-     * @param Repository           $assetRepo
+     * @param ScopeConfigInterface $scopeConfig=
      * @param array                $components
      * @param array                $data
      * @param array                $config
@@ -34,7 +33,7 @@ class Wysiwyg extends \Magento\Ui\Component\Form\Element\AbstractElement
         ContextInterface $context,
         Types $wysiwygTypes,
         ScopeConfigInterface $scopeConfig,
-        Repository $assetRepo,
+        Factory $configFactory,
         array $components = [],
         array $data = [],
         array $config = []
@@ -53,8 +52,10 @@ class Wysiwyg extends \Magento\Ui\Component\Form\Element\AbstractElement
         $data['config']['component'] = $config['component'];
         $data['config']['elementTmpl'] = $config['template'];
 
-        // Pass down the base folder for the JS components
-        $data['config']['baseWysiwygJsUrl'] = $assetRepo->getUrl('Magento_Wysiwyg');
+        // Merge any required configuration into the final output
+        if (isset($config['config'])) {
+            $data['config']['typeConfig'] = $configFactory->create($config['config'])->toArray();
+        }
 
         parent::__construct($context, $components, $data);
     }
