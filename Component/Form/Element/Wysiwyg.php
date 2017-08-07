@@ -2,11 +2,16 @@
 
 namespace Magento\Wysiwyg\Component\Form\Element;
 use Magento\Framework\View\Element\UiComponent\ContextInterface;
-use Magento\Wysiwyg\Model\Config\ConfigInterface as WysiwygConfig;
 use Magento\Framework\App\Config\ScopeConfigInterface;
+use Magento\Wysiwyg\Model\Types;
+use Magento\Framework\View\Asset\Repository;
 
 /**
  * Class Wysiwyg
+ *
+ * @package Magento\Wysiwyg\Component\Form\Element
+ *
+ * @author Dave Macaulay <dmacaulay@magento.com>
  */
 class Wysiwyg extends \Magento\Ui\Component\Form\Element\AbstractElement
 {
@@ -15,17 +20,21 @@ class Wysiwyg extends \Magento\Ui\Component\Form\Element\AbstractElement
     /**
      * Wysiwyg constructor.
      *
-     * @param ContextInterface $context
-     * @param WysiwygConfig    $wysiwygConfig
-     * @param array            $components
-     * @param array            $data
-     * @param array            $config
+     * @param ContextInterface     $context
+     * @param Types                $wysiwygTypes
+     * @param ScopeConfigInterface $scopeConfig
+     * @param Repository           $assetRepo
+     * @param array                $components
+     * @param array                $data
+     * @param array                $config
+     *
+     * @throws \Exception
      */
     public function __construct(
         ContextInterface $context,
-        WysiwygConfig $wysiwygConfig,
+        Types $wysiwygTypes,
         ScopeConfigInterface $scopeConfig,
-        \Magento\Framework\View\Asset\Repository $assetRepo,
+        Repository $assetRepo,
         array $components = [],
         array $data = [],
         array $config = []
@@ -35,7 +44,7 @@ class Wysiwyg extends \Magento\Ui\Component\Form\Element\AbstractElement
             \Magento\Store\Model\ScopeInterface::SCOPE_STORE
         );
 
-        $config = $wysiwygConfig->getType($enabledType);
+        $config = $wysiwygTypes->getType($enabledType);
         if (!$config) {
             throw new \Exception('Unable to locate WYSIWYG ' . $enabledType);
         }

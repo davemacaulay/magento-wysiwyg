@@ -2,22 +2,22 @@
 This is an example implementation of abstracting the WYSIWYG component to allow customisation of the WYSIWYG's through configuration.
 
 ### Adding a new WYSIWYG type
-This can be achieved by implementing `wysiwyg.xml` within your module. 
+This can be achieved by implementing further types within a modules `di.xml` file for the class `\Magento\Wysiwyg\Model\Types`. 
 
 Here is an example of the potential contents:
 ```xml
-<?xml version="1.0"?>
-<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:noNamespaceSchemaLocation="wysiwyg.xsd">
-    <types>
-        <wysiwyg name="example_wysiwyg">
-            <label>Example</label>
-            <version>1.0.0</version>
-            <component>Namespace_Module/js/wysiwyg-component</component>
-            <template>Namespace_Module/wysiwyg</template>
-        </wysiwyg>
-    </types>
-</config>
+<type name="Magento\Wysiwyg\Model\Types">
+    <arguments>
+        <argument name="types" xsi:type="array">
+            <item name="tinymce_v4" xsi:type="array">
+                <item name="label" xsi:type="string">TinyMCE</item>
+                <item name="version" xsi:type="string">4.6.4</item>
+                <item name="component" xsi:type="string">Magento_Wysiwyg/js/tinymcev4/wysiwyg-component</item>
+                <item name="template" xsi:type="string">Magento_Wysiwyg/tinymcev4/wysiwyg</item>
+            </item>
+        </argument>
+    </arguments>
+</type>
 ```
 
 You then have to implement a component & template, these followed Magento's core implementations. However the component should extend from `Magento_Wysiwyg/js/component/wysiwyg-component`.

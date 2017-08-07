@@ -6,11 +6,22 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <virtualType name="WysiwygReader" type="Magento\Framework\Config\Reader\Filesystem">
+    <type name="Magento\Wysiwyg\Model\Types">
         <arguments>
-            <argument name="converter" xsi:type="object">Magento\Wysiwyg\Model\Config\Converter</argument>
-            <argument name="schemaLocator" xsi:type="object">Magento\Wysiwyg\Model\Config\SchemaLocator</argument>
-            <argument name="fileName" xsi:type="string">wysiwyg.xml</argument>
+            <argument name="types" xsi:type="array">
+                <item name="tinymce_v4" xsi:type="array">
+                    <item name="label" xsi:type="string">TinyMCE</item>
+                    <item name="version" xsi:type="string">4.6.4</item>
+                    <item name="component" xsi:type="string">Magento_Wysiwyg/js/tinymcev4/wysiwyg-component</item>
+                    <item name="template" xsi:type="string">Magento_Wysiwyg/tinymcev4/wysiwyg</item>
+                </item>
+                <item name="tinymce_v3" xsi:type="array">
+                    <item name="label" xsi:type="string">TinyMCE</item>
+                    <item name="version" xsi:type="string">3.5.8</item>
+                    <item name="component" xsi:type="string">Magento_Wysiwyg/js/tinymcev3/wysiwyg-component</item>
+                    <item name="template" xsi:type="string">Magento_Wysiwyg/tinymcev3/wysiwyg</item>
+                </item>
+            </argument>
         </arguments>
-    </virtualType>
+    </type>
 </config>

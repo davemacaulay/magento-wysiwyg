@@ -2,6 +2,13 @@
 
 namespace Magento\Wysiwyg\Plugin;
 
+/**
+ * Class UiPlugin
+ *
+ * @package Magento\Wysiwyg\Plugin
+ *
+ * @author Dave Macaulay <dmacaulay@magento.com>
+ */
 class UiPlugin
 {
     /**

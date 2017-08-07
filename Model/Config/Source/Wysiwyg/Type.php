@@ -2,29 +2,31 @@
 
 namespace Magento\Wysiwyg\Model\Config\Source\Wysiwyg;
 
-use Magento\Wysiwyg\Model\Config\ConfigInterface;
+use Magento\Wysiwyg\Model\Types;
 
 /**
  * Class Type
  *
  * @package Magento\Wysiwyg\Model\Config\Source\Wysiwyg
+ *
+ * @author Dave Macaulay <dmacaulay@magento.com>
  */
 class Type implements \Magento\Framework\Option\ArrayInterface
 {
     /**
-     * @var ConfigInterface
+     * @var Types
      */
-    protected $wysiwygConfig;
+    protected $wysiwygTypes;
 
     /**
      * Type constructor.
      *
-     * @param ConfigInterface $config
+     * @param Types $wysiwygTypes
      */
     public function __construct(
-        ConfigInterface $config
+        Types $wysiwygTypes
     ) {
-        $this->wysiwygConfig = $config;
+        $this->wysiwygTypes = $wysiwygTypes;
     }
 
     /**
@@ -33,7 +35,7 @@ class Type implements \Magento\Framework\Option\ArrayInterface
     public function toOptionArray()
     {
         $output = [];
-        foreach ($this->wysiwygConfig->getTypes() as $key => $type) {
+        foreach ($this->wysiwygTypes->getTypes() as $key => $type) {
             $output[] = [
                 'value' => $key,
                 'label' => __($type['label']) . ' v' . $type['version']
