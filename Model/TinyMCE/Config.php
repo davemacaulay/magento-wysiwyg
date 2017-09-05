@@ -6,6 +6,7 @@ use Magento\Wysiwyg\Api\ConfigInterface;
 use Magento\Framework\View\Asset\Repository;
 use Magento\Variable\Model\Variable\Config as VariableConfig;
 use Magento\Widget\Model\Widget\Config as WidgetConfig;
+use Magento\Backend\Model\UrlInterface;
 
 
 /**
@@ -33,6 +34,11 @@ class Config implements ConfigInterface
     protected $widgetConfig;
 
     /**
+     * @var UrlInterface
+     */
+    protected $urlInterface;
+
+    /**
      * Config constructor.
      *
      * @param Repository $assetRepo
@@ -40,11 +46,13 @@ class Config implements ConfigInterface
     public function __construct(
         Repository $assetRepo,
         VariableConfig $variableConfig,
-        WidgetConfig $widgetConfig
+        WidgetConfig $widgetConfig,
+        UrlInterface $urlInterface
     ) {
         $this->assetRepo = $assetRepo;
         $this->variableConfig = $variableConfig;
         $this->widgetConfig = $widgetConfig;
+        $this->urlInterface = $urlInterface;
     }
 
     /**
@@ -56,7 +64,36 @@ class Config implements ConfigInterface
     {
         return [
             'baseWysiwygJsUrl' => $this->assetRepo->getUrl('Magento_Wysiwyg'),
-            'variableActionUrl' => $this->variableConfig->getVariablesWysiwygActionUrl()
+            'variableActionUrl' => $this->variableConfig->getVariablesWysiwygActionUrl(),
+            'widgetWindowUrl' => $this->getWidgetWindowUrl()
         ];
+    }
+
+    /**
+     * Return Widgets Insertion Plugin Window URL
+     *
+     * @return string
+     */
+    public function getWidgetWindowUrl()
+    {
+        $params = [];
+
+        /* @todo implement skip widget & widget filtering functionality
+         * $skipped = is_array($config->getData('skip_widgets')) ? $config->getData('skip_widgets') : [];
+        if ($config->hasData('widget_filters')) {
+            $all = $this->_widgetFactory->create()->getWidgets();
+            $filtered = $this->_widgetFactory->create()->getWidgets($config->getData('widget_filters'));
+            foreach ($all as $code => $widget) {
+                if (!isset($filtered[$code])) {
+                    $skipped[] = $widget['@']['type'];
+                }
+            }
+        }
+
+        if (count($skipped) > 0) {
+            $params['skip_widgets'] = $this->encodeWidgetsToQuery($skipped);
+        }*/
+
+        return $this->urlInterface->getUrl('adminhtml/widget/index', $params);
     }
 }

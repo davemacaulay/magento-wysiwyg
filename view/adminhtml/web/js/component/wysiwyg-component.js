@@ -1,7 +1,8 @@
 define([
+    'underscore',
     'Magento_Ui/js/lib/view/utils/async',
     'Magento_Ui/js/form/element/abstract'
-], function ($, Abstract) {
+], function (_, $, Abstract) {
 
     return Abstract.extend({
         defaults: {
@@ -46,6 +47,21 @@ define([
          */
         initWysiwyg: function (node) {
             return false;
+        },
+
+        /**
+         * Merge multiple config objects
+         *
+         * @returns {{}}
+         */
+        mergeConfig: function () {
+            var config = {};
+            _.each(arguments, function (arg) {
+                if (typeof arg === 'object') {
+                    _.extend(config, arg);
+                }
+            });
+            return config;
         }
     });
 });
